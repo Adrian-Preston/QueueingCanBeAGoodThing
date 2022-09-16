@@ -5,6 +5,8 @@
 // - the code between BEGIN USER CODE and END USER CODE
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
+import { Big } from "big.js";
+
 // BEGIN EXTRA CODE
 function cloneWithNewUrl(link, href) {
     const target = link.cloneNode();
@@ -15,14 +17,15 @@ function cloneWithNewUrl(link, href) {
     return target;
 }
 // END EXTRA CODE
+
 /**
  * @param {string} iconUrl16x16
  * @param {string} iconUrl32x32
  * @param {string} appleTouchIconUrl
  * @returns {Promise.<void>}
  */
-async function SetFavicon(iconUrl16x16, iconUrl32x32, appleTouchIconUrl) {
-    // BEGIN USER CODE
+export async function SetFavicon(iconUrl16x16, iconUrl32x32, appleTouchIconUrl) {
+	// BEGIN USER CODE
     const entries = [
         ["link[rel=icon][sizes=16x16]", iconUrl16x16],
         ["link[rel=icon][sizes=32x32]", iconUrl32x32],
@@ -36,7 +39,5 @@ async function SetFavicon(iconUrl16x16, iconUrl32x32, appleTouchIconUrl) {
         return acc;
     }, []);
     document.head.append(...links);
-    // END USER CODE
+	// END USER CODE
 }
-
-export { SetFavicon };
